@@ -11,7 +11,7 @@ king = 6
 #include <stdio.h>
 
 int board[8][8] = {0};
-int i, j, k;
+int j, k;
 
 int main () {
 

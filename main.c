@@ -10,15 +10,10 @@ king = 6
 
 #include <stdio.h>
 
-int board[7][7];
+int board[8][8] = {0};
 int i, j, k;
 
-
 int main () {
-    for (i = 0; i <= 7; i++){
-        board[i][1] = 1;
-        board[i][6] = 1;
-    }
 
     board[0][0] = 20;
     board[1][0] = 30;
@@ -37,7 +32,6 @@ int main () {
     board[5][7] = 4;
     board[6][7] = 3;
     board[7][7] = 2;
-
 
     for (j = 0; j <= 7; j++){
         for (k = 0; k <= 7; k++){

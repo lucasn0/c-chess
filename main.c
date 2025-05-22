@@ -1,49 +1,61 @@
 /*
 pawn = 1
-tower = 2
+rook = 2
 knight = 3
 bishop = 4
 queen = 5
 king = 6
 '0' added at the end for black pieces
 */
-
 #include <stdio.h>
 
+typedef enum {
+    EMPTY = 0,
+    PAWN,
+    ROOK,
+    KNIGHT,
+    BISHOP,
+    QUEEN,
+} Piece;
+
+typedef struct {
+    Piece board[8][8];
+} ChessGame;
+
 int board[8][8] = {0};
-int j, k;
 
-int main () {
+void init_board(ChessGame *game) {
 
-    board[0][0] = 20;
-    board[1][0] = 30;
-    board[2][0] = 40;
-    board[3][0] = 50;
-    board[4][0] = 60;
-    board[5][0] = 40;
-    board[6][0] = 30;
-    board[7][0] = 20;
-
-    board[0][7] = 2;
-    board[1][7] = 3;
-    board[2][7] = 4;
-    board[3][7] = 5;
-    board[4][7] = 6;
-    board[5][7] = 4;
-    board[6][7] = 3;
-    board[7][7] = 2;
-
-    for (j = 0; j <= 7; j++){ //sets up pawns
-        board[j][1] = 1;
-        board[j][6] = 1;
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            game->board[i][j] = EMPTY;
+        }
     }
 
-    for (j = 0; j <= 7; j++){ //prints the initial state of the board
-        for (k = 0; k <= 7; k++){
-            printf(" %d", board[k][j]);
+    for (int j = 0; j < 8; j++) {
+        game->board[1][j] = PAWN;
+        game->board[6][j] = PAWN;
+    } 
+
+    game->board[0][0] = ROOK;
+    game->board[0][7] = ROOK;
+
+    game->board[7][0] = ROOK;
+    game->board[7][7] = ROOK;
+}
+
+void print_board(const ChessGame *game) {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            printf("%d ", game->board[i][j]);
         }
         printf("\n");
     }
-    
+}
+
+int main() {
+    ChessGame game;
+    init_board(&game);
+    print_board(&game);
     return 0;
 }

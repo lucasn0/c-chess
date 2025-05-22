@@ -33,12 +33,17 @@ int main () {
     board[6][7] = 3;
     board[7][7] = 2;
 
-    for (j = 0; j <= 7; j++){
+    for (j = 0; j <= 7; j++){ //sets up pawns
+        board[j][1] = 1;
+        board[j][6] = 1;
+    }
+
+    for (j = 0; j <= 7; j++){ //prints the initial state of the board
         for (k = 0; k <= 7; k++){
             printf(" %d", board[k][j]);
         }
         printf("\n");
     }
-
+    
     return 0;
 }

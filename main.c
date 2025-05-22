@@ -22,8 +22,6 @@ typedef struct {
     Piece board[8][8];
 } ChessGame;
 
-int board[8][8] = {0};
-
 void init_board(ChessGame *game) {
 
     for (int i = 0; i < 8; i++) {

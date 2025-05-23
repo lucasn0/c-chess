@@ -8,6 +8,7 @@ king = 6
 '0' added at the end for black pieces
 */
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef enum {
     EMPTY = 0,
@@ -27,8 +28,11 @@ typedef enum {
     BLACK_KING = -6,
 } Piece;
 
+typedef enum { WHITE, BLACK } Player;
+
 typedef struct {
     Piece board[8][8];
+    Player current_turn;
 } ChessGame;
 
 void init_board(ChessGame *game) {
@@ -61,7 +65,11 @@ void init_board(ChessGame *game) {
     game->board[7][5] = WHITE_BISHOP;
     game->board[7][6] = WHITE_KNIGHT; 
     game->board[7][7] = WHITE_ROOK;
+
+    game->current_turn = WHITE;
 }
+
+//movement code... zzz, will do later.
 
 void print_board(const ChessGame *game) {
     for (int i = 0; i < 8; i++) {
@@ -76,5 +84,15 @@ int main() {
     ChessGame game;
     init_board(&game);
     print_board(&game);
+    bool game_running = true;
+
+    while (game_running) {
+        print_board(&game);
+
+        printf("%s to move. Enter your move: ",
+            game.current_turn == WHITE ? "White" : "Black");
+
+    }
+
     return 0;
 }

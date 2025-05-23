@@ -5,7 +5,7 @@ knight = 3
 bishop = 4
 queen = 5
 king = 6
-'0' added at the end for black pieces
+negative numbers for black pieces.
 */
 #include <stdio.h>
 #include <stdbool.h>
